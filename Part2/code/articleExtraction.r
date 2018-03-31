@@ -4,7 +4,7 @@ library(Rcrawler)
 
 ## Read all articles collected so far
 setwd("../Data")
-Articles <- read.csv("NYTimes_Articles_Collected")
+Articles <- read.csv("NYTimes_Articles_Info")
 Articles <- subset(Articles, select = -c(X))
 setwd("../code")
 
@@ -18,13 +18,16 @@ for (i in c(1:nrow(Articles))){
   if (i==1){
     try(Data<-ContentScraper(Url = toString(Articles$web_url[i]), XpathPatterns =c("//h1","//article"), PatternsName = c("Title","Content")))
     content <-data.frame(Data)
-    wordcount <- length(unlist(strsplit(toString(content$Content[1])," ")))
+    content$Content <- str_replace_all(content$Content, "[^[:alnum:]]", " ")  ## removes special characters
+    wordcount <- length(unlist(strsplit(toString(content$Content[1])," "))) ## gets a count of the number of words in the article
     content <- cbind(content,wordcount)
+    
   }
   if (i>1){
     try(Data <- ContentScraper(Url = toString(Articles$web_url[i]), XpathPatterns =c("//h1","//article"), PatternsName = c("Title","Content")))
     temp <- data.frame(Data)
-    wordcount <- length(unlist(strsplit(toString(temp$Content[1])," ")))
+    temp$Content <- str_replace_all(temp$Content, "[^[:alnum:]]", " ") ##removes special characters
+    wordcount <- length(unlist(strsplit(toString(temp$Content[1])," "))) ## gets a count of the number of words in the article
     temp <- cbind(temp,wordcount)
     content <- rbind(content,temp)
   }
