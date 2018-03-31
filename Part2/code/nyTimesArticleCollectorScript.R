@@ -19,16 +19,18 @@ Name=paste("NYTimes","- Collected" ,nrow(Data)," articles on :",Sys.time())
 write.csv(Data, Name) 
 setwd("../../code")
 
-## Merge collected articles with existing articles and saving a consolidated csv file 
+## Read all articles collected so far
 setwd("../Data")
-Articles <- read.csv("NYTimes_Articles_Collected")
+Articles <- read.csv("NYTimes_Articles_Info")
 Articles <- subset(Articles, select = -c(X))
 names(Articles)[names(Articles) == 'X_id'] <- '_id'
+
+## Merge collected articles with existing articles and saving a consolidated csv file 
 Articles <- rbind(Articles,Data)
 Articles = Articles[!duplicated(Articles$`_id`),]
 Articles = Articles[!duplicated(Articles$snippet),]
 Articles = Articles[!duplicated(Articles$word_count),]
-write.csv(Articles, "NYTimes_Articles_Collected") 
+write.csv(Articles, "NYTimes_Articles_Info") 
 setwd("../code")
 
 
