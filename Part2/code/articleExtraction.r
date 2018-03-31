@@ -34,8 +34,7 @@ for (i in c(1:nrow(Articles))){
 ## Eliminating duplicates caused by error handling
 content = content[!duplicated(content$wordcount),]
 
-
-## Savind the article extracted
+## Saving the article extracted
 setwd("../Data")
 write.csv(content,"NYTimes_Articles_data")
 setwd("../code")
