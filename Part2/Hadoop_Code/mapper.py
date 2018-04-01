@@ -12,24 +12,25 @@ from nltk.tokenize import word_tokenize
 ps = PorterStemmer()
 stop_words=set(stopwords.words("english"))
 
+
 # input comes from STDIN (standard input)
 for line in sys.stdin:
-    #line=" hi my name is akshay. He is a good boy. He loves to drive his Porsche  "
+    
     # remove leading and trailing whitespace
     line=line.lower()
     line = line.strip()
     
     #Initializing Word List 
     word_list=[]
-    
-    
+        
     # split the line into words
     #words = line.split()
     words=word_tokenize(line)
     
     #Remove Stop words from the list of words
+    #If Length of Word is 1, we are considering it as not useful and hence not adding it to our list
     for word in words:
-        if word in stop_words or word == '.':
+        if word in stop_words or len(word)==1:
             pass
         else:
             word=ps.stem(word)
