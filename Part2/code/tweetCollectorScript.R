@@ -6,6 +6,8 @@ library(twitteR)
 library(ggplot2)
 library(ggmap)
 library(data.table)
+library(stringr)
+
 ## Setup oauth
 setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A", 
                     "owezT5IVRVG8nvkSHXxqq4t2McwPO6mxesJTGU2549yHTJbP8m", 
@@ -37,8 +39,22 @@ temp <- Tweets_Collected
 Tweets_Collected <- rbind(Tweets_Collected,tweets) 
 Tweets_Collected = Tweets_Collected[!duplicated(Tweets_Collected$id),]
 
-# Saving all consolidated Tweets Collected to a csv file
+
+
+# Saving all consolidated Tweets Collected to a csv file - before preprocessing
 setwd("../Data")
 write.csv(Tweets_Collected, file = "Tweets_Collected")  
+setwd("../code")
+
+## Remove non- ASCII characters, hastags (#xxxxx) used in tweet search, tags(@xxxxxx) and other special characters
+Tweets_Collected_prepocessed <- (iconv(Tweets_Collected$text, "latin1", "ASCII", sub=""))
+Tweets_Collected_prepocessed <- sub("#\\w+ *", "", Tweets_Collected_prepocessed)
+Tweets_Collected_prepocessed <- data.frame(sub("@\\w+ *", "", Tweets_Collected_prepocessed))
+#Tweets_Collected_prepocessed <- data.frame(str_replace_all(Tweets_Collected_prepocessed, "[[:punct:]]", " "))
+#colnames(Tweets_Collected_prepocessed) <- c("content")
+#rownames(Tweets_Collected_prepocessed) <- NULL
+## Saves all tweets collected to a csv file - After PreProcessing
+setwd("../Data")
+write.table(Tweets_Collected_prepocessed, file = "Tweets_Collected_Preprocessed.txt", sep="\t", col.names = F, row.names = F)  
 setwd("../code")
 
