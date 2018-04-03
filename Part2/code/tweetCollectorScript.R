@@ -8,6 +8,8 @@ library(ggmap)
 library(data.table)
 library(stringr)
 
+Start_date <- "2018-03-10"
+End_date <- "2018-03-31"
 ## Setup oauth
 setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A", 
                     "owezT5IVRVG8nvkSHXxqq4t2McwPO6mxesJTGU2549yHTJbP8m", 
@@ -16,9 +18,9 @@ setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A",
 
                                     ############## Collection of Tweets ###################
 ## Searching for tweets ##
-search.string <- "#deletefacebook"
-no.of.tweets <- 2000
-tweets <- searchTwitter(search.string, n=no.of.tweets, lang="en")
+search.string <- c("cambridge","analytica")
+no.of.tweets <- 1000
+tweets <- searchTwitter(search.string, n=no.of.tweets, lang="en", since= Start_date , until = End_date)
 
 ## Conversion of searched tweets to Data frame
 tweets <- twListToDF(tweets)
@@ -50,9 +52,7 @@ setwd("../code")
 Tweets_Collected_prepocessed <- (iconv(Tweets_Collected$text, "latin1", "ASCII", sub=""))
 Tweets_Collected_prepocessed <- sub("#\\w+ *", "", Tweets_Collected_prepocessed)
 Tweets_Collected_prepocessed <- data.frame(sub("@\\w+ *", "", Tweets_Collected_prepocessed))
-#Tweets_Collected_prepocessed <- data.frame(str_replace_all(Tweets_Collected_prepocessed, "[[:punct:]]", " "))
-#colnames(Tweets_Collected_prepocessed) <- c("content")
-#rownames(Tweets_Collected_prepocessed) <- NULL
+
 ## Saves all tweets collected to a csv file - After PreProcessing
 setwd("../Data")
 write.table(Tweets_Collected_prepocessed, file = "Tweets_Collected_Preprocessed.txt", sep="\t", col.names = F, row.names = F)  

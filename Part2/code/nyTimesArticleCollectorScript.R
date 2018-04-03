@@ -1,10 +1,13 @@
 library(rtimes)
 
+Start_Date <- "20180310"
+End_Data <- "20180331"
+
 ## Setting up Authentication
 Sys.setenv(NYTIMES_AS_KEY = "fa567ce571174336957fc6786b4dc91e")
 
 ## Collecting of articles
-DF <- as_search(q = "cambridge","analytica" , begin_date = "20180310", end_date = "20180329", all_results = TRUE)
+DF <- as_search(q = "cambridge","analytica" , begin_date = Start_Date, end_date = End_Data, all_results = TRUE)
 
 ## Pre- processing ( removing duplicates)
 Data <- DF$data
