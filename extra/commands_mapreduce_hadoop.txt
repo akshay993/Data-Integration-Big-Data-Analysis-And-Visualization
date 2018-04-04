@@ -24,3 +24,25 @@ hadoop jar /home/hadoop/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.6.4.jar
 
 #View the output
 hdfs dfs -cat output/*
+
+
+##### How to set Python Path in Ubuntu ##########
+
+nano .bashrc
+
+export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python3.4/dist-packages"
+
+export PATH="/usr/local/lib/python3.4/dist-packages:$PATH"
+alias python=python3
+
+#Exit .bashrc
+
+#Now, go to  cd /home/hadoop/hadoop/etc/hadoop
+#open hadoop-env.sh
+
+nano hadoop-env.sh
+
+#Add the following line
+export PYTHONPATH=/usr/local/lib/python3.4/dist-packages
+
+#Exit hadoop-env.sh
