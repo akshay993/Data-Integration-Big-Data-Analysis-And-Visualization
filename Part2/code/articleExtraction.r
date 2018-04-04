@@ -5,7 +5,7 @@ library(stringr)
 
 ## Read all articles collected so far
 setwd("../Data")
-Articles <- read.csv("NYTimes_Articles_Info")
+Articles <- read.csv("NYTimes_Articles_data")
 Articles <- subset(Articles, select = -c(X))
 setwd("../code")
 
