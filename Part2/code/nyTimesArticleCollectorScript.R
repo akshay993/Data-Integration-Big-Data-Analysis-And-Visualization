@@ -1,13 +1,13 @@
 library(rtimes)
 
 Start_Date <- "20180310"
-End_Data <- "20180331"
+End_Data <- "20180405"
 
 ## Setting up Authentication
 Sys.setenv(NYTIMES_AS_KEY = "fa567ce571174336957fc6786b4dc91e")
 
 ## Collecting of articles
-DF <- as_search(q = "cambridge","analytica" , begin_date = Start_Date, end_date = End_Data, all_results = TRUE)
+DF <- as_search(q = "facebook", "scandal", begin_date = Start_Date, end_date = End_Data, all_results = TRUE)
 
 ## Pre- processing ( removing duplicates)
 Data <- DF$data
@@ -23,8 +23,8 @@ write.csv(Data, Name)
 setwd("../../code")
 
 ## Read all articles collected so far
-setwd("../Data")
-Articles <- read.csv("NYTimes_Articles_Info")
+setwd("../Data/NYTimes")
+Articles <- read.csv("NYTimes_Articles_Total")
 Articles <- subset(Articles, select = -c(X))
 names(Articles)[names(Articles) == 'X_id'] <- '_id'
 
@@ -33,8 +33,8 @@ Articles <- rbind(Articles,Data)
 Articles = Articles[!duplicated(Articles$`_id`),]
 Articles = Articles[!duplicated(Articles$snippet),]
 Articles = Articles[!duplicated(Articles$word_count),]
-write.csv(Articles, "NYTimes_Articles_Info") 
-setwd("../code")
+write.csv(Articles, "NYTimes_Articles_Total") 
+setwd("../../code")
 
 
 

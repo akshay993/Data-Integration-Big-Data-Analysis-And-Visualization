@@ -8,8 +8,8 @@ library(ggmap)
 library(data.table)
 library(stringr)
 
-Start_date <- "2018-03-10"
-End_date <- "2018-04-05"
+Start_date <- "2018-03-20"
+End_date <- "2018-04-21"
 ## Setup oauth
 setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A", 
                     "owezT5IVRVG8nvkSHXxqq4t2McwPO6mxesJTGU2549yHTJbP8m", 
@@ -18,8 +18,8 @@ setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A",
 
                                     ############## Collection of Tweets ###################
 ## Searching for tweets ##
-search.string <- c("cambridge","analytica")
-no.of.tweets <- 3500
+search.string <- c("facebook","scandal")
+no.of.tweets <- 2500
 tweets <- searchTwitter(search.string, n=no.of.tweets, lang="en", since= Start_date , until = End_date)
 
 ## Conversion of searched tweets to Data frame
@@ -33,7 +33,7 @@ setwd("../../code")
 
 
 # Reading all tweets collected so far
-Tweets_Collected=read.csv("../data/Tweets_Collected")
+Tweets_Collected=read.csv("../data/Twitter/Tweets_Collected")
 Tweets_Collected<- subset(Tweets_Collected, select = -c(X)) #removing column named X
 temp <- Tweets_Collected
 
@@ -44,9 +44,9 @@ Tweets_Collected = Tweets_Collected[!duplicated(Tweets_Collected$id),]
 
 
 # Saving all consolidated Tweets Collected to a csv file - before preprocessing
-setwd("../Data")
+setwd("../Data/Twitter")
 write.csv(Tweets_Collected, file = "Tweets_Collected")  
-setwd("../code")
+setwd("../../code")
 
 ## Remove non- ASCII characters, hastags (#xxxxx) used in tweet search, tags(@xxxxxx) and other special characters
 Tweets_Collected_prepocessed <- (iconv(Tweets_Collected$text, "latin1", "ASCII", sub=""))
@@ -55,6 +55,6 @@ Tweets_Collected_prepocessed <- data.frame(sub("@\\w+ *", "", Tweets_Collected_p
 
 ## Saves all tweets collected to a csv file - After PreProcessing
 setwd("../Data")
-write.table(Tweets_Collected_prepocessed, file = "Tweets_Collected_Preprocessed.txt", sep="\t", col.names = F, row.names = F)  
+write.table(Tweets_Collected_prepocessed, file = "tweetsTotal.txt", sep="\t", col.names = F, row.names = F)  
 setwd("../code")
 
