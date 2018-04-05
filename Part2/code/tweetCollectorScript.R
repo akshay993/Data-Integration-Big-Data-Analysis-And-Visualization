@@ -9,7 +9,7 @@ library(data.table)
 library(stringr)
 
 Start_date <- "2018-03-10"
-End_date <- "2018-03-31"
+End_date <- "2018-04-05"
 ## Setup oauth
 setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A", 
                     "owezT5IVRVG8nvkSHXxqq4t2McwPO6mxesJTGU2549yHTJbP8m", 
@@ -18,8 +18,8 @@ setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A",
 
                                     ############## Collection of Tweets ###################
 ## Searching for tweets ##
-search.string <- c("#deletefacebook")
-no.of.tweets <- 2500
+search.string <- c("cambridge","analytica")
+no.of.tweets <- 3500
 tweets <- searchTwitter(search.string, n=no.of.tweets, lang="en", since= Start_date , until = End_date)
 
 ## Conversion of searched tweets to Data frame
