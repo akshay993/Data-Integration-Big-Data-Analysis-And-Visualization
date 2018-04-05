@@ -40,5 +40,5 @@ content = content[!duplicated(content$wordcount),]
 
 ## Saving the article extracted
 setwd("../Data")
-write.table(content,"articlesTotal.txt",col.names = F,row.names = F)
+write.table(content$Content,"articlesTotal.txt",col.names = F,row.names = F)
 setwd("../code")

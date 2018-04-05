@@ -1,16 +1,11 @@
-library('RCurl')
-library('stringr')
-library('XML')
-
-## Read all articles collected so far
-setwd("../Data")
-Articles <- read.csv("NYTimes_Articles_data")
-Articles <- subset(Articles, select = -c(X))
-
-
-text <- Articles$Content[1]
-text <- data.frame(text)
-
-setwd("../Data")
-#write.table(text, "NYTimes_Test_Data_Article1.txt")
-write.table(text, "NYTimes_Test_Data_Article1.txt",sep="\t",row.names=FALSE, col.names = FALSE)
+for (i in c(1:nrow(Articles))){
+  if (i>1){
+    try(Data <- ContentScraper(Url = toString(Articles$web_url[i]), XpathPatterns =c("//h1","//article"), PatternsName = c("Title","Content")))
+    #temp <- data.frame(Data)
+    #temp$Content <- str_replace_all(temp$Content, "[^[:alnum:]]", " ") ##removes special characters
+    #wordcount <- length(unlist(strsplit(toString(temp$Content)," "))) ## gets a count of the number of words in the article
+    #temp <- cbind(temp,wordcount)
+    #content <- rbind(content,temp)
+  }
+  print(i)
+}
