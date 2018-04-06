@@ -8,8 +8,11 @@ current_word = None
 current_count = 0
 word = None
 
-# input comes from STDIN
 
+
+
+
+# input comes from STDIN
 
 for line in sys.stdin:
     # remove leading and trailing whitespace
@@ -36,6 +39,8 @@ for line in sys.stdin:
             print ("%s\t%s" % (current_word,current_count))
         current_count = count
         current_word = word
+
+
 
 # do not forget to output the last word if needed!
 if current_word == word:
