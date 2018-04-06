@@ -17,13 +17,13 @@ Data = Data[!duplicated(Data$snippet),]
 Data = Data[!duplicated(Data$word_count),]
 
 ## Saving the articles collected for the day
-setwd("../Data/NYTimes")
+setwd("../../Data/NYTimes")
 Name=paste("NYTimes","- Collected" ,nrow(Data)," articles on :",Sys.time())
 write.csv(Data, Name) 
-setwd("../../code")
+setwd("../../code/dataCollection")
 
 ## Read all articles collected so far
-setwd("../Data/NYTimes")
+setwd("../../Data/NYTimes")
 Articles <- read.csv("NYTimes_Articles_Total")
 Articles <- subset(Articles, select = -c(X))
 names(Articles)[names(Articles) == 'X_id'] <- '_id'
@@ -34,7 +34,7 @@ Articles = Articles[!duplicated(Articles$`_id`),]
 Articles = Articles[!duplicated(Articles$snippet),]
 Articles = Articles[!duplicated(Articles$word_count),]
 write.csv(Articles, "NYTimes_Articles_Total") 
-setwd("../../code")
+setwd("../../code/dataCollection")
 
 
 

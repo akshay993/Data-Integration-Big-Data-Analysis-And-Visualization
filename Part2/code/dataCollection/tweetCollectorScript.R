@@ -20,21 +20,21 @@ setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A",
                                     ############## Collection of Tweets ###################
 ## Searching for tweets ##
 search.string <- c("facebook","data")
-no.of.tweets <- 2500
+no.of.tweets <- 250
 tweets <- searchTwitter(search.string, n=no.of.tweets, lang="en", since= Start_date , until = End_date)
 
 ## Conversion of searched tweets to Data frame
 tweets <- twListToDF(tweets)
 
 ## Saving collected data to a csv file - only the tweets collection this session
-setwd("../Data/Twitter")
+setwd("../../Data/Twitter")
 Name=paste("Twitter -", no.of.tweets," Tweets Collected on :",Sys.time())
 write.csv(tweets, file = Name)
-setwd("../../code")
+setwd("../../code/dataCollection")
 
 
 # Reading all tweets collected so far
-Tweets_Collected=read.csv("../data/Twitter/Tweets_Collected")
+Tweets_Collected=read.csv("../../Data/Twitter/Tweets_Collected")
 Tweets_Collected<- subset(Tweets_Collected, select = -c(X)) #removing column named X
 temp <- Tweets_Collected
 
@@ -45,9 +45,9 @@ Tweets_Collected = Tweets_Collected[!duplicated(Tweets_Collected$id),]
 
 
 # Saving all consolidated Tweets Collected to a csv file - before preprocessing
-setwd("../Data/Twitter")
+setwd("../../Data/Twitter")
 write.csv(Tweets_Collected, file = "Tweets_Collected")  
-setwd("../../code")
+setwd("../../code/dataCollection")
 
 ## Remove non- ASCII characters, hastags (#xxxxx) used in tweet search, tags(@xxxxxx) and other special characters
 Tweets_Collected_prepocessed <- data.frame(iconv(Tweets_Collected$text, "latin1", "ASCII", sub=""))
@@ -59,7 +59,7 @@ Tweets_Collected_prepocessed <- data.frame(str_replace_all(Tweets_Collected_prep
                                                 "[^[:alnum:]]", " "))
 colnames(Tweets_Collected_prepocessed) <- c("content")
 ## Saves all tweets collected to a csv file - After PreProcessing
-setwd("../Data")
+setwd("../../Data")
 write.table(Tweets_Collected_prepocessed$content, file = "tweetsTotal.txt", sep="\t", col.names = F, row.names = F, quote = F)  
-setwd("../code")
+setwd("../code/dataCollection")
 

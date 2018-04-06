@@ -4,10 +4,10 @@ library(Rcrawler)
 library(stringr)
 
 ## Read all articles collected so far
-setwd("../Data/NYTimes")
+setwd("../../Data/NYTimes")
 Articles <- read.csv("NYTimes_Articles_Total")
 Articles <- subset(Articles, select = -c(X))
-setwd("../../code")
+setwd("../../code/dataCollection")
 
 #Rcrawler(Website = "https://www.nytimes.com/aponline/2018/03/20/world/europe/ap-eu-britain-facebook-cambridge-analytica-the-latest.html", no_cores = 4, no_conn = 4, ExtractXpathPat = c("//h1","//article"), PatternsNames = c("Title","Content"))
 
@@ -68,6 +68,6 @@ for (i in c(1:nrow(Articles))){
 content = content[!duplicated(content$wordcount),]
 
 ## Saving the article extracted
-setwd("../Data")
+setwd("../../Data")
 write.table(content$content,"articlesTotal.txt",col.names = F,row.names = F, quote = F)
-setwd("../code")
+setwd("../code/dataCollection")
