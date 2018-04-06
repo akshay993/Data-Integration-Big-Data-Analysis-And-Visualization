@@ -7,7 +7,7 @@ End_Data <- "20180405"
 Sys.setenv(NYTIMES_AS_KEY = "fa567ce571174336957fc6786b4dc91e")
 
 ## Collecting of articles
-DF <- as_search(q = "facebook", "scandal", begin_date = Start_Date, end_date = End_Data, all_results = TRUE)
+DF <- as_search(q = "cambridge", "analytica", begin_date = Start_Date, end_date = End_Data, all_results = TRUE)
 
 ## Pre- processing ( removing duplicates)
 Data <- DF$data

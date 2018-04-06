@@ -17,20 +17,49 @@ setwd("../../code")
 
 for (i in c(1:nrow(Articles))){
   if (i==1){
-    try(Data<-ContentScraper(Url = toString(Articles$web_url[i]), XpathPatterns =c("//h1","//article"), PatternsName = c("Title","Content")))
+    try(Data<-ContentScraper(Url = toString(Articles$web_url[i]),
+                             XpathPatterns =c("//*/p[@class='story-body-text story-content']"),
+                             #ExcludeXpathPat = c("//*/header[@id='story-header']",
+                             #                    "//*/div[@class='story-interrupter']",
+                             #                   "//*/div[@class='story-interrupter']",
+                             #                  "//*/footer[@class='story-footer story-content']",
+                             #                 "//*/section[@id='related-combined-coverage']",
+                             #                "//*/div[@class='reader-satisfaction-survey prompt feedback-prompt story-content hidden']",
+                             #               "//*/div[@id='story-meta-footer']"),
+                             PatternsName = c("Content"),
+                             ManyPerPattern = TRUE))
     content <-data.frame(Data)
     content$Content <- str_replace_all(content$Content, "[^[:alnum:]]", " ")  ## removes special characters
-    wordcount <- length(unlist(strsplit(toString(content$Content[i])," "))) ## gets a count of the number of words in the article
+    #wordcount <- length(unlist(strsplit(toString(content$Content[i])," "))) ## gets a count of the number of words in the article
+    #content <- cbind(content,wordcount)
+    content<-as.vector(t(as.matrix(content)))
+    content<-data.frame(paste(content, collapse = ''))
+    colnames(content) <- "content"
+    wordcount <- length(unlist(strsplit(toString(content$content)," "))) ## gets a count of the number of words in the article
     content <- cbind(content,wordcount)
     
   }
   if (i>1){
-    try(Data <- ContentScraper(Url = toString(Articles$web_url[i]), XpathPatterns =c("//h1","//article"), PatternsName = c("Title","Content")))
+    try(Data<-ContentScraper(Url = toString(Articles$web_url[i]),
+                             XpathPatterns =c("//*/p[@class='story-body-text story-content']"),
+                             #ExcludeXpathPat = c("//*/header[@id='story-header']",
+                             #                    "//*/div[@class='story-interrupter']",
+                             #                   "//*/div[@class='story-interrupter']",
+                             #                  "//*/footer[@class='story-footer story-content']",
+                             #                 "//*/section[@id='related-combined-coverage']",
+                             #                "//*/div[@class='reader-satisfaction-survey prompt feedback-prompt story-content hidden']",
+                             #               "//*/div[@id='story-meta-footer']"),
+                             PatternsName = c("Content"),
+                             ManyPerPattern = TRUE))
     temp <- data.frame(Data)
     temp$Content <- str_replace_all(temp$Content, "[^[:alnum:]]", " ") ##removes special characters
-    wordcount <- length(unlist(strsplit(toString(temp$Content)," "))) ## gets a count of the number of words in the article
+    temp<-as.vector(t(as.matrix(temp)))
+    temp<-data.frame(paste(temp, collapse = ''))
+    colnames(temp) <- "content"
+    wordcount <- length(unlist(strsplit(toString(temp$content)," "))) ## gets a count of the number of words in the article
     temp <- cbind(temp,wordcount)
     content <- rbind(content,temp)
+    
   }
   print(i)
 }
