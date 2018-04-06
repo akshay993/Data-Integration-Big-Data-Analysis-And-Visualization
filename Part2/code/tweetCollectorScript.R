@@ -49,12 +49,16 @@ write.csv(Tweets_Collected, file = "Tweets_Collected")
 setwd("../../code")
 
 ## Remove non- ASCII characters, hastags (#xxxxx) used in tweet search, tags(@xxxxxx) and other special characters
-Tweets_Collected_prepocessed <- (iconv(Tweets_Collected$text, "latin1", "ASCII", sub=""))
+Tweets_Collected_prepocessed <- data.frame(iconv(Tweets_Collected$text, "latin1", "ASCII", sub=""))
+Tweets_Collected_prepocessed <- rm_url(Tweets_Collected_prepocessed$iconv.Tweets_Collected.text...latin1....ASCII...sub......)
 Tweets_Collected_prepocessed <- sub("#\\w+ *", "", Tweets_Collected_prepocessed)
 Tweets_Collected_prepocessed <- data.frame(sub("@\\w+ *", "", Tweets_Collected_prepocessed))
-
+Tweets_Collected_prepocessed <- data.frame(gsub("RT", "", Tweets_Collected_prepocessed$sub.....w..........Tweets_Collected_prepocessed.)) 
+Tweets_Collected_prepocessed <- data.frame(str_replace_all(Tweets_Collected_prepocessed$gsub..RT.......Tweets_Collected_prepocessed.sub.....w..........Tweets_Collected_prepocessed..,
+                                                "[^[:alnum:]]", " "))
+colnames(Tweets_Collected_prepocessed) <- c("content")
 ## Saves all tweets collected to a csv file - After PreProcessing
 setwd("../Data")
-write.table(Tweets_Collected_prepocessed, file = "tweetsTotal.txt", sep="\t", col.names = F, row.names = F)  
+write.table(Tweets_Collected_prepocessed$content, file = "tweetsTotal.txt", sep="\t", col.names = F, row.names = F)  
 setwd("../code")
 
