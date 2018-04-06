@@ -7,9 +7,10 @@ library(ggplot2)
 library(ggmap)
 library(data.table)
 library(stringr)
+library(qdapRegex)
 
-Start_date <- "2018-03-20"
-End_date <- "2018-04-21"
+Start_date <- "2018-03-10"
+End_date <- "2018-04-06"
 ## Setup oauth
 setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A", 
                     "owezT5IVRVG8nvkSHXxqq4t2McwPO6mxesJTGU2549yHTJbP8m", 
@@ -18,7 +19,7 @@ setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A",
 
                                     ############## Collection of Tweets ###################
 ## Searching for tweets ##
-search.string <- c("facebook","scandal")
+search.string <- c("facebook","data")
 no.of.tweets <- 2500
 tweets <- searchTwitter(search.string, n=no.of.tweets, lang="en", since= Start_date , until = End_date)
 
@@ -59,6 +60,6 @@ Tweets_Collected_prepocessed <- data.frame(str_replace_all(Tweets_Collected_prep
 colnames(Tweets_Collected_prepocessed) <- c("content")
 ## Saves all tweets collected to a csv file - After PreProcessing
 setwd("../Data")
-write.table(Tweets_Collected_prepocessed$content, file = "tweetsTotal.txt", sep="\t", col.names = F, row.names = F)  
+write.table(Tweets_Collected_prepocessed$content, file = "tweetsTotal.txt", sep="\t", col.names = F, row.names = F, quote = F)  
 setwd("../code")
 
