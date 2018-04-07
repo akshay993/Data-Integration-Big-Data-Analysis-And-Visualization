@@ -9,6 +9,11 @@ from nltk.tokenize import word_tokenize
 ps = PorterStemmer()
 stop_words=set(stopwords.words("english"))
 
+symbol_list=['.',',','?','!', '@', '"', "'", '<', '>', '/', '[', ']','{','}','(',')',':',';', '…', '”', '#','$','%','^','&','*','-','+','_','=']
+
+stop_words1=["said", "also", "like", "could", "also", "would" ,"us", "want", "via", "amp"  ]             
+
+
 main_list=[]
 
 #line="hi my name is akshay. I am a programmer. hi my age is 24. hi my name is akshay"
@@ -25,7 +30,7 @@ for line in sys.stdin:
     words=word_tokenize(line)
     
     for word in words:
-        if word in stop_words or len(word)==1:
+        if word in stop_words or len(word)==1 or word in symbol_list or word in stop_words1:
             pass
         else:
             #word=ps.stem(word)

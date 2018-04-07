@@ -952,7 +952,6 @@ aloud	4
 alphabet	44
 alphago	1
 already	95
-also	488
 alt	1
 alter	2
 altered	4
@@ -3951,7 +3950,6 @@ cotton	1
 couch	1
 coughed	3
 coughing	1
-could	470
 council	28
 councillors	1
 councilman	1
@@ -9280,7 +9278,6 @@ lighting	1
 lightly	1
 lights	2
 lightspeed	1
-like	484
 liked	10
 likelihood	5
 likely	81
@@ -9651,7 +9648,7 @@ mandalay	1
 mandate	1
 mandated	1
 mandatory	3
-mand�	1
+mandë	1
 maneuver	2
 manges	1
 manhattan	31
@@ -11894,7 +11891,6 @@ plurality	2
 plus	7
 pneumonia	1
 poached	1
-poca	1
 pocket	2
 pocketed	1
 pocketing	1
@@ -13714,7 +13710,6 @@ safra	3
 sagers	2
 sagged	1
 sagittarius	1
-said	1922
 sail	2
 saint	4
 saints	1
@@ -16688,7 +16683,6 @@ urgent	4
 urging	3
 urine	1
 ursula	1
-us	162
 us10yt	1
 usa	3
 usage	10
@@ -16830,7 +16824,6 @@ vetoed	1
 vetowashington	1
 vetted	1
 vetting	4
-via	26
 viability	2
 viable	1
 viacom	6
@@ -17045,7 +17038,6 @@ wanes	1
 wang	4
 waning	1
 wannacry	1
-want	162
 wanted	62
 wanting	5
 wants	55
@@ -17406,7 +17398,6 @@ worth	53
 wortham	1
 worthless	1
 worthwhile	1
-would	611
 wound	6
 wounded	2
 wow	2
@@ -17571,4 +17562,4 @@ zug	2
 zurich	3
 zwaan	1
 zynga	1
-à	1
+época	1

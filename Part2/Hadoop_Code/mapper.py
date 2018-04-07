@@ -9,7 +9,9 @@ from nltk.tokenize import word_tokenize
 
 ps = PorterStemmer()
 stop_words=set(stopwords.words("english"))
+symbol_list=['.',',','?','!', '@', '"', "'", '<', '>', '/', '[', ']','{','}','(',')',':',';', '…', '”', '#','$','%','^','&','*','-','+','_','=']
 
+stop_words1=["said", "also", "like", "could", "also", "would" ,"us", "want", "via", "amp"  ]             
 main_list=[]
 # input comes from STDIN (standard input)
 for line in sys.stdin:
@@ -28,7 +30,7 @@ for line in sys.stdin:
     #Remove Stop words from the list of words
     #If Length of Word is 1, we are considering it as not useful and hence not adding it to our list
     for word in words:
-        if word in stop_words or len(word)==1:
+        if word in stop_words or len(word)==1 or word in symbol_list or word in stop_words1:
             pass
         else:
             #word=ps.stem(word)
