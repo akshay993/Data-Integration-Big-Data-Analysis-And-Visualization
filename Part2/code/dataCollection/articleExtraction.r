@@ -15,7 +15,7 @@ setwd("../../code/dataCollection")
 ## try is used for error handling
 ## A total word count is done on the article to elimninate duplicates
 
-for (i in c(1:nrow(Articles))){
+for (i in c(1:200)){
   if (i==1){
     try(Data<-ContentScraper(Url = toString(Articles$web_url[i]),
                              XpathPatterns =c("//*/p[@class='story-body-text story-content']"),
