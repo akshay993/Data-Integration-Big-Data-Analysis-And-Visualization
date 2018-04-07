@@ -9,7 +9,7 @@ library(data.table)
 library(stringr)
 library(qdapRegex)
 
-Start_date <- "2018-03-10"
+Start_date <- "2018-03-01"
 End_date <- "2018-04-06"
 ## Setup oauth
 setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A", 
@@ -19,8 +19,8 @@ setup_twitter_oauth("VxJ6qp5XL3VTclBzMBsD1Ez1A",
 
                                     ############## Collection of Tweets ###################
 ## Searching for tweets ##
-search.string <- c("facebook","data")
-no.of.tweets <- 250
+search.string <- c("cambridge","analytica")
+no.of.tweets <- 3500
 tweets <- searchTwitter(search.string, n=no.of.tweets, lang="en", since= Start_date , until = End_date)
 
 ## Conversion of searched tweets to Data frame
@@ -42,12 +42,12 @@ temp <- Tweets_Collected
 Tweets_Collected <- rbind(Tweets_Collected,tweets) 
 Tweets_Collected = Tweets_Collected[!duplicated(Tweets_Collected$id),]
 
-
-
 # Saving all consolidated Tweets Collected to a csv file - before preprocessing
 setwd("../../Data/Twitter")
 write.csv(Tweets_Collected, file = "Tweets_Collected")  
 setwd("../../code/dataCollection")
+
+Tweets_Collected = Tweets_Collected[!duplicated(Tweets_Collected$text),]
 
 ## Remove non- ASCII characters, hastags (#xxxxx) used in tweet search, tags(@xxxxxx) and other special characters
 Tweets_Collected_prepocessed <- data.frame(iconv(Tweets_Collected$text, "latin1", "ASCII", sub=""))
