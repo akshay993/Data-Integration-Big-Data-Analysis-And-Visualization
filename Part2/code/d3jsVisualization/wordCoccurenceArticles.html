@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Word Cloud</title>
+    <script src="lib/d3.js" charset="utf-8"></script>
+    <script src="lib/d3.layout.cloud.js"></script>
+    <script src="lib/d3.wordcloud.js"></script>
+    <script src="data/example.words.js"></script>
+  </head>
+  <body style="text-align: center">
+    <h1>Word Cooccurence - NYTimes</h1>
+    <br></br>
+    <br></br>
+    <div id='wordcloud'></div>
+    <script>
+      d3.wordcloud()
+        .size([500, 300])
+        .fill(d3.scale.ordinal().range(["#884400", "#448800", "#888800", "#444400"]))
+        .words(words)
+        .onwordclick(function(d, i) {
+          if (d.href) { window.location = d.href; }
+        })
+        .start();
+    </script>
+
+  </body>
+</html>
+

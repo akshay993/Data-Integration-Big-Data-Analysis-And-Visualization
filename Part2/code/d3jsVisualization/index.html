@@ -1,74 +1,77 @@
 <!DOCTYPE HTML>
 <html>
 <head> 
-	<center><h1>Big Data Visualization</h1></center>
-
+	<center><h1>Facebook and Cambridge Analytica Data Breach</h1></center>
 	<style>
+    html {
+      background: url(bg.jpg);
+      background-size: 1700px 950px; 
+    }
 		body {
-    			background-color: #95AEF3;
-    			image-rendering: auto;
-  				image-rendering: crisp-edges;
-  				image-rendering: pixelated;
-  				background-repeat: no-repeat;
-			 }
+      font-family: sans-serif;
+    	color:white;
+      font-size: 16px
+			   }
     .dropbtn {
-    background-color: #4CAF50;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-}
+      background-color: #212F3C;
+      color: white;
+      padding: 16px;
+      font-size: 14px;
+      border: none;
+    }
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
 
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
 
-/* Links inside the dropdown */
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
 
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd}
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #ddd}
 
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-    background-color: #3e8e41;
-}
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {
+        background-color: #3e8e41;
+    }
 	</style>
 </head>
 
 <body>
 
-  <br>><center><h2> Word Count</h2></center>
+  <br>><center><h2> Word Count </h2></center>
   <center>
     <div class="dropdown">
       <button class="dropbtn"> Select Data Source
       </button>
-      <br></br>
-      <div class="dropdown-content">
-        <a href="https://Google.com">NY Times - Articles</a>
+        <div class="dropdown-content">
+        <a href="test.html" font> 
+          <font size= 3px>
+          NY Times - Articles</a>
         <a href="#">Tweets</a>
+          </font>
       </div>
     </div>
   </center>
@@ -76,23 +79,26 @@
   <script>
   </script>
 
-  <h2> <center><br> Co - occuring words </br></center> </h2>
+  <h2> <center><br> Co - occuring words </center> </h2>
   <center>
     <div class="dropdown">
       <button class="dropbtn"> Select Data Source
       </button>
-      <br></br>
       <div class="dropdown-content">
-        <a href="https://Google.com">NY Times - Articles</a>
+        <a href="wordCoccurenceArticles.html">NY Times - Articles </a>
         <a href="#">Tweets</a>
       </div>
     </div>
   </center>
-  <script type="browserify.js">
-   $(function(){
-      alert("My First Jquery Test");
-   });
-</script>
+  
+
+
+
+
+
+    <img src = "" id = "img"/> <input type="button" value="Show Picture
+    1" onclick="pic1()"/> <input type="button" value="Show Picture 2"
+    onclick="pic2()"/>
 
 </body>
 
