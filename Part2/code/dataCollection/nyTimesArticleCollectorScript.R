@@ -1,13 +1,13 @@
 library(rtimes)
 
-Start_Date <- "20180301"
-End_Data <- "20180406"
+Start_Date <- "20180320"
+End_Data <- "20180321"
 
 ## Setting up Authentication
 Sys.setenv(NYTIMES_AS_KEY = "fa567ce571174336957fc6786b4dc91e")
 
 ## Collecting of articles
-DF <- as_search(q = "facebook", "data", begin_date = Start_Date, end_date = End_Data, all_results = TRUE)
+DF <- as_search(q = "delete","facebook", begin_date = Start_Date, end_date = End_Data, all_results = TRUE)
 
 ## Pre- processing ( removing duplicates)
 Data <- DF$data
