@@ -15,7 +15,7 @@ stop_words1=["said", "also", "like", "could", "also", "would" ,"us", "want", "vi
 main_list=[]
 # input comes from STDIN (standard input)
 for line in sys.stdin:
-    #line="SAN FRANCISCO — Facebook’s chief executive, Mark Zuckerberg, on Wednesday publicly addressed for the first time the misuse of data belonging to 50 million users of the social network and described the steps the company would take to safeguard the information of its more than two billion monthly users.Although his statement addressing a chorus of criticism fell short of a full-throated apology, Mr. Zuckerberg said that Facebook would contact users whose data had been harvested through a personality quiz app and passed along to the political data firm Cambridge Analytica. “We have a responsibility to protect your data,” Mr. Zuckerberg said Wednesday in a Facebook post, “and if we can’t then we don’t deserve to serve you. ”Mr. Zuckerberg, 33, was trying to quell the crisis over the disclosure last weekend that Cambridge Analytica had used data that had been improperly obtained from Facebook as the firm worked on behalf of Donald J. Trump’s presidential campaign. “Are there other Cambridge Analyticas out there?” Mr. Zuckerberg said later in an interview with The New York Times. He added, “Were there apps which could have gotten access to more information and potentially sold it without us knowing or done something that violated people’s trust? We also need to make sure we get that under control.”"
+    
     # remove leading and trailing whitespace
     line=line.lower()
     line = line.strip()
@@ -24,7 +24,6 @@ for line in sys.stdin:
     word_list=[]    
     
     # split the line into words
-    #words = line.split()
     words=word_tokenize(line)
     
     #Remove Stop words from the list of words

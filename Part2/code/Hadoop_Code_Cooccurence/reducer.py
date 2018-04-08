@@ -9,9 +9,6 @@ current_count = 0
 word = None
 
 
-
-
-
 # input comes from STDIN
 
 for line in sys.stdin:
