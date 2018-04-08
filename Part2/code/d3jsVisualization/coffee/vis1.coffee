@@ -405,7 +405,7 @@ root.plotData = (selector, data, plot) ->
     .call(plot)
 
 texts = [
-  {key:"word",file:"co_articles_top50.csv",name:"NYTimes Articles"}
+  {key:"word",file:"coarticles.csv",name:"NYTimes Articles"}
 ]
 
 # ---
